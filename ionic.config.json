@@ -1,0 +1,7 @@
+{
+  "name": "Spring-IonicApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
