@@ -1,24 +1,23 @@
-<ion-app>
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Login</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content padding>
-  <h3 id="title">SISTEMA DE PEDIDOS</h3>
-  <img src="assets/imgs/login.png" alt="logo" class="logo">
-  <form>
-    <ion-item>
-      <ion-label class="login-labels">Email</ion-label>
-      <ion-input name="email" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label class="login-labels">Senha</ion-label>
-      <ion-input name="senha" type="password"></ion-input>
-    </ion-item>
-    <ion-button size="large" class="login-button">Entrar</ion-button>
-  </form>
-  <ion-button size="large" class="register-button">Registrar</ion-button>
-  </ion-content>
+  <ion-app>
+    <ion-content padding>
+      <h3 id="title">
+        {{ cadastrando ?  'CADASTRO' : 'SISTEMA DE PEDIDOS' }}
+      </h3>
+      <img src="assets/imgs/login.png" alt="logo" class="logo">
+      <form #loginForm="ngForm" (submit)="onSubmit()">
+        <ion-item>
+          <ion-label class="login-labels">Username:</ion-label>
+          <ion-input name="email" type="text" placeholder="Digite seu login"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="login-labels">Password:</ion-label>
+          <ion-input name="senha" type="password" placeholder="Digite sua senha"></ion-input>
+        </ion-item>
+        <div>
+          <ion-button size="large" class="login-button" type="submit" *ngIf="!cadastrando">Entrar</ion-button>
+          <ion-button size="large" class="register-button" (click)="preparaCadastro($event)">Registrar</ion-button>
+          <ion-button size="large" class="login-button" (click)="cancelaCadastro()" *ngIf="cadastrando">Voltar</ion-button>
+        </div>
+      </form>
+    </ion-content>
 </ion-app>

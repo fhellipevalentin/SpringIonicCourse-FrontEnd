@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 
 @Component({
@@ -8,7 +9,9 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  constructor(public menu: MenuController) { }
+  cadastrando: boolean=false;
+
+  constructor(public menu: MenuController, private router: Router) { }
   ngOnInit(): void {
   }
 
@@ -20,7 +23,17 @@ export class HomePage implements OnInit {
     this.menu.swipeGesture(true);
   }
 
+  onSubmit() {
+    this.router.navigate(['/categorias']);
+    this.cadastrando=false;
+  }
   
-  
- 
+  preparaCadastro(event: any) {
+    event.preventDefault();
+    this.cadastrando=true;
+  }
+
+  cancelaCadastro() {
+    this.cadastrando=false;
+  }
 }
