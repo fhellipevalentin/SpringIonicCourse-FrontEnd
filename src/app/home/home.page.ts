@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(public menu: MenuController) { }
+  ngOnInit(): void {
   }
 
+  ionViewWillEnter() {
+    this.menu.swipeGesture(false);
+  }
+
+  ionViewDidLeave(): void {
+    this.menu.swipeGesture(true);
+  }
+
+  
+  
+ 
 }

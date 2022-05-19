@@ -1,0 +1,27 @@
+ion-content {
+    img.logo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .login-labels{
+        margin-left: 5px;
+    }
+    .login-button{
+        position: relative;
+        left: 5%;
+        margin-top: 10px;
+        width: 90%;
+    }
+    .register-button{
+        position: relative;
+        left: 5%;
+        margin-top: 10px;
+        width: 90%;
+    }
+    #title{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
