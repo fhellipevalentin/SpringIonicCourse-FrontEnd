@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiURLBase: 'http://localhost:8080'
+  apiURLBase: 'http://localhost:8080',
+  bucketBase: 'https://paraprojetodecurso-spring-ionic.s3.sa-east-1.amazonaws.com'
 };
 
 /*
