@@ -8,6 +8,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CategoriaService } from './services/domain/categoria.service';
+import { ErrorInterceptorProvider } from 'src/interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CategoriaService } from './services/domain/categoria.service';
   ],
   providers: [
     CategoriaService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ErrorInterceptorProvider
   ],
   bootstrap: [AppComponent],
 })
