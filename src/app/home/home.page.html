@@ -7,11 +7,11 @@
       <form #loginForm="ngForm" (submit)="onSubmit()">
         <ion-item>
           <ion-label class="login-labels">Username:</ion-label>
-          <ion-input name="email" type="text" placeholder="Digite seu login"></ion-input>
+          <ion-input  [(ngModel)]="creds.email" name="email" type="text" placeholder="Digite seu login"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label class="login-labels">Password:</ion-label>
-          <ion-input name="senha" type="password" placeholder="Digite sua senha"></ion-input>
+          <ion-input [(ngModel)]="creds.senha" name="senha" type="password" placeholder="Digite sua senha"></ion-input>
         </ion-item>
         <div>
           <ion-button size="large" class="login-button" type="submit" *ngIf="!cadastrando">Entrar</ion-button>
