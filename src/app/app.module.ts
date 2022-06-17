@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CategoriaService } from './services/domain/categoria.service';
 import { ErrorInterceptorProvider } from 'src/interceptors/error-interceptor';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ErrorInterceptorProvider } from 'src/interceptors/error-interceptor';
     HttpClientModule
   ],
   providers: [
+    AuthService,
     CategoriaService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ErrorInterceptorProvider

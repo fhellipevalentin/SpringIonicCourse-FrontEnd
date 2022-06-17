@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { CredenciaisDTO } from '../services/domain/credenciais.dto';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,14 @@ import { CredenciaisDTO } from '../services/domain/credenciais.dto';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  
   cadastrando: boolean=false;
   creds: CredenciaisDTO = {
     email: "",
     senha: ""
   };
 
-  constructor(public menu: MenuController, private router: Router) { }
+  constructor(public menu: MenuController, private router: Router, public auth: AuthService) { }
   ngOnInit(): void {
   }
 
@@ -30,9 +31,13 @@ export class HomePage implements OnInit {
 
   onSubmit() {
     this.cadastrando=false;
-    console.log(this.creds);
     
-    this.router.navigate(['/categorias']);
+    this.auth.authenticate(this.creds)
+      .subscribe(response => {
+        console.log(response.headers.get('Authorization'));
+        this.router.navigate(['/categorias']);
+      },
+      error => {})
   }
   
   preparaCadastro(event: any) {
