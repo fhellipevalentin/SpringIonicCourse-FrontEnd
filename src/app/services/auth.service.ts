@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { CredenciaisDTO } from "./domain/credenciais.dto";
+import { CredenciaisDTO } from "../../models/credenciais.dto";
 import { environment } from "src/environments/environment";
-import { LocalUser } from "./domain/local_user";
+import { LocalUser } from "../../models/local_user";
 import { StorageService } from "./storage.service";
 import { JwtHelperService } from "@auth0/angular-jwt";
 

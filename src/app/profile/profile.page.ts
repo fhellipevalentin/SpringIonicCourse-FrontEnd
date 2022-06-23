@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ClienteDTO } from 'src/models/cliente.dto';
+import { ClienteService } from '../services/domain/cliente.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({
@@ -8,14 +10,18 @@ import { StorageService } from '../services/storage.service';
 })
 export class ProfilePage{
 
-  email: string;
+  cliente: ClienteDTO;
 
-  constructor( public storage: StorageService) { }
+  constructor( public storage: StorageService, public clienteService: ClienteService) { }
 
-  ionViewWillEnter(): void {
-    let LocalUser = this.storage.getLocalUser();
-    if (LocalUser && LocalUser.email) {
-      this.email = LocalUser.email;
+  ionViewWillEnter() {
+    let localUser = this.storage.getLocalUser();
+    if (localUser && localUser.email) {
+      this.clienteService.findByEmail(localUser.email)
+        .subscribe(response => {
+          this.cliente = response;
+        },
+        error => {});
     }
   }
 
